@@ -1,0 +1,17 @@
+df1 = pd.DataFrame({
+    'Date':['2013-11-24','2013-11-24','2013-11-25','2013-11-25'],
+    'Fruit':['Banana','Orange','Apple','Celery'],
+    'Price':[22.1,np.nan,7.6,10.2],
+    'Price2':[22.1,None,7.6,10.2],
+    'Color':['Yellow','Orange','Green','Green'],
+    })
+
+##List comprehension over dataframe
+df1['missing1'] = ['missing' if x is np.nan else x for x in df1['Price']]
+##Price2
+df1['missing2'] = ['missing' if x is np.nan else x for x in df1['Price2']]
+
+
+###Use Lambda Function over datafram
+df1['missing3'] = df1['Price'].apply(lambda x: 1 if x is np.nan else x)
+
