@@ -1,0 +1,11 @@
+two_day_lag_w_dash = (datetime.datetime.today() - datetime.timedelta(days=2)).strftime('%Y-%m-%d')
+two_day_lag = two_day_lag_w_dash.replace('-', '')
+
+### 6 months ago and get first day of that month
+anchor_date_w_dash = (datetime.datetime.today() - datetime.timedelta(days=180)).replace(day=1).strftime('%Y-%m-%d')
+anchor_date = anchor_date_w_dash.replace('-', '')
+
+
+## Use Previous Month to account for data lag
+first_of_current_mo = datetime.datetime.today().replace(day=1)
+prev_month = (first_of_current_mo - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
