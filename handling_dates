@@ -6,6 +6,16 @@ anchor_date_w_dash = (datetime.datetime.today() - datetime.timedelta(days=180)).
 anchor_date = anchor_date_w_dash.replace('-', '')
 
 
-## Use Previous Month to account for data lag
+### Use Previous Month to account for data lag
 first_of_current_mo = datetime.datetime.today().replace(day=1)
 prev_month = (first_of_current_mo - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+
+### Create list of dates. Can be used for backfilling
+from datetime import datetime, timedelta
+
+start_date= datetime(2023, 1, 1)
+end_date = datetime(2023, 1, 31)
+  
+# Getting List of Days using pandas
+miss_last14_dates = [x.strftime('%Y%m%d') for x  in pd.date_range(start_date,end_date,freq='d')]
+print(miss_last14_dates);
