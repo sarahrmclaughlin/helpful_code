@@ -1,0 +1,64 @@
+### exploring boto3 with aws
+
+# 1. Create a folder pathway
+# We specify the folder_path variable to indicate the desired "folder" structure within the bucket.
+# We use s3.put_object to create a "zero-byte" object with the specified object key (folder_path). This operation effectively creates the illusion of a folder or path in S3.
+# The result is a new "folder" in your S3 bucket with the path specified in folder_path.
+# Remember that in S3, folders are not actual entities but are simulated using object keys. Creating a "zero-byte" object is a common practice to create the folder structure you want within your S3 bucket.
+
+
+import boto3
+
+# Initialize an S3 client
+s3 = boto3.client('s3')
+
+#S3 bucket
+bucket_name = '123-abc-sarah-ds-us-east-1'
+
+################################################################################################################
+###Create new prefix/folder path to put objects
+################################################################################################################
+
+# Specify the desired folder path as part of the S3 object key
+folder_path = 'user/sarah/boto3/helloworld/'
+# folder_path = 'user/sarah/boto3/helloworld/abc' this creates a zero byte hellow world object
+
+try:
+    # Create a "zero-byte" object with the specified object key to simulate the folder
+    s3.put_object(Bucket=bucket_name, Key=folder_path)
+
+    print(f"Created folder '{folder_path}' in S3 bucket '{bucket_name}'")
+
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
+
+################################################################################################################
+
+
+################################################################################################################
+###Upload object to prefix/pathway
+################################################################################################################
+
+local_file_path = '/dbfs/FileStore/shared_uploads/sarah/uploadme123.csv'  # The path to the local file to upload
+
+object_key = 'user/sarah/boto3/new_upload123.csv'     # The object key specifying the path within the bucket
+
+s3.upload_file(local_file_path, bucket_name, object_key)
+################################################################################################################
+
+
+################################################################################################################
+###Delete ^ object to prefix/pathway
+################################################################################################################
+object_key = 'user/sarah/boto3/new_upload123.csv'   
+try:
+    # Delete the specified S3 object
+    s3.delete_object(Bucket=bucket_name, Key=object_key)
+
+    print(f"Deleted S3 object '{object_key}' from bucket '{bucket_name}'")
+
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
+################################################################################################################
+
+    
