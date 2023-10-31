@@ -19,3 +19,10 @@ end_date = datetime(2023, 1, 31)
 # Getting List of Days using pandas
 miss_last14_dates = [x.strftime('%Y%m%d') for x  in pd.date_range(start_date,end_date,freq='d')]
 print(miss_last14_dates);
+
+
+####
+yesterday_datetime = datetime.datetime.today() - datetime.timedelta(days=1)
+yesterday_date = datetime.datetime.strftime(yesterday_datetime, '%Y-%m-%d') #returns 2023-01-19
+two_days_ago_date = (datetime.datetime.strptime(yesterday_date, '%Y-%m-%d') - datetime.timedelta(days=1)).strftime('%Y%m%d') ##returns 20230118
+
