@@ -26,3 +26,11 @@ yesterday_datetime = datetime.datetime.today() - datetime.timedelta(days=1)
 yesterday_date = datetime.datetime.strftime(yesterday_datetime, '%Y-%m-%d') #returns 2023-01-19
 two_days_ago_date = (datetime.datetime.strptime(yesterday_date, '%Y-%m-%d') - datetime.timedelta(days=1)).strftime('%Y%m%d') ##returns 20230118
 
+
+# Get today's date
+today_date = datetime.datetime.now()
+# format the date as a string in "YYYYMM" format
+today_date_my = today_date.strftime("%Y%m")
+a day ago saved as a string in "YYYYMM" format
+day_ago_my = day_ago[:6]
+
