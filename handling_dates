@@ -34,3 +34,18 @@ today_date_my = today_date.strftime("%Y%m")
 a day ago saved as a string in "YYYYMM" format
 day_ago_my = day_ago[:6]
 
+
+# Original string date
+original_date_str = '20230701'
+
+# Convert the string to a datetime object
+original_date = datetime.strptime(original_date_str, '%Y%m%d')
+
+# Subtract one day
+result_date = original_date - timedelta(days=1)
+
+# Convert the result back to a string in the same format
+result_date_str = result_date.strftime('%Y%m%d')
+
+# Show the result as a string
+print(result_date_str)
