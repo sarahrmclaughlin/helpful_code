@@ -49,3 +49,9 @@ result_date_str = result_date.strftime('%Y%m%d')
 
 # Show the result as a string
 print(result_date_str)
+
+
+# String YYYYMMDD to YYYY-MM-DD as date in one line
+original_date_str = '20230701'
+a = datetime.strptime(datetime.strptime(original_date_str, '%Y%m%d').strftime('%Y-%m-%d'), '%Y-%m-%d').date()
+print(a) ---> returns 2023-07-01 stored as a date, if you remove .date() it will be stored as a string '2023-07-01'
