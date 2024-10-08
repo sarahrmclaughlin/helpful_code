@@ -1,3 +1,3 @@
 %md
 
-##### Conditionals to handle Null values within dataframes
+##### Useful code for things I look up frequently. Mostly dates.
