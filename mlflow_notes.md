@@ -12,8 +12,9 @@
 - Regardless of how you are using it, you need to specify some pathway. Some examples say ```experiment_name = "diabetes_experiment/"```, but this will fail.
 - Once you run this cell, you will see what looks like an error, but is actually just letting you know this experiment does not exist and it creates it.
 - Here is an example that is a combo of chatGPT and my own notes/additions
-- with mlflow.start_run() as run:
+  
  ```
+    with mlflow.start_run() as run:
     # Log model parameters to MLflow
     mlflow.log_params(params)
 
