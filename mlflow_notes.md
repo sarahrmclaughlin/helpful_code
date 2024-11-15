@@ -50,3 +50,40 @@
     # Print the MLflow run URL for reference
     print(f"MLflow run URL: {mlflow.get_artifact_uri()}")
 ```
+- There are a few ways to load a model. (This works in Databricks)
+```
+# There are two ways to load a model
+# 1. Use model run ID and name directly from experiment
+# model_uri_by_run_id = 'runs:/5a1f7eaf011249379eaad42e584e5eab/xgboost_model'
+# loaded_model_by_run_id = mlflow.pyfunc.load_model(model_uri_by_run_id)
+
+# 2. Use the model name that was registered and make sure to include the version number
+registered_model_uri = "models:/Sarah_XGBoost_BC_Model/1"
+loaded_model_by_model_name = mlflow.pyfunc.load_model(model_uri=registered_model_uri)
+loaded_model_by_model_name
+
+# Load artifacts from the registered model
+artifacts = mlflow.artifacts.download_artifacts(artifact_uri=registered_model_uri)
+```
+
+#### General notes about ML Flow log_params, log_metrics, log_artifacts
+- ```log_params``` Stores info about parameters and hyperparameters
+- ```log_metrics``` Stores info about metrics like AUC, accuracy, etc
+-  ```log_artifacts``` Stores the model and also files like plots, jsons, csvs etc. Metrics can be stored this way, but you need to do additional processing.
+-  Otherwise, in order to view the metrics, you need to get to it in a round about way
+  ```
+# Load the model using the registered model URI (see above)
+loaded_model = mlflow.pyfunc.load_model(model_uri=registered_model_uri)
+
+# Retrieve the run ID from the model URI
+client = MlflowClient()
+model_details = client.get_registered_model(name="Sarah_XGBoost_BC_Model")
+latest_version = model_details.latest_versions[0]
+run_id = latest_version.run_id
+
+# Load the metrics logged during the run
+metrics = mlflow.get_run(run_id).data.metrics
+
+# Display the metrics
+metrics
+```
