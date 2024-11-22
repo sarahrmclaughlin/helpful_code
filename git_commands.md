@@ -3,6 +3,7 @@
 - ```git pull origin master```
 - ```git checkout {your branch}```
 - ```git merge master```
+- in VSCode, it will ask about opening Merge Editor. ```Incoming`` means changes from **Master** branch and **Current** is talking about your branch.
 
 ##### Once Master branch is updated and you want to start a new branch based off Master
 - ```git checkout master```
