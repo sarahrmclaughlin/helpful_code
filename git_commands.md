@@ -1,18 +1,18 @@
-##### When working on another branch while master is in a PR, approved and you want to pull changes
+##### When working on another branch while Main just got approved with updates from another PR and you want to pull changes from Main
 - ```git checkout master```
 - ```git pull origin master```
 - ```git checkout {your branch}```
 - ```git merge master```
-- in VSCode, it will ask about opening Merge Editor. ```Incoming`` means changes from **Master** branch and **Current** is talking about your branch.
+- in VSCode, it will ask about opening Merge Editor. ```Incoming`` means changes from **Main** branch and ``Current`` is talking about your working branch.
 
-##### Once Master branch is updated and you want to start a new branch based off Master
+##### Once Master branch is updated and you want to start a new branch based off Main
 - ```git checkout master```
 - ```git pull origin master```
 - ```git checkout -b new-branch-name```
 - ```git branch ```
 - ```git push -u origin new-branch-name``` #This command will push the branch and set the upstream tracking to the remote repository.
 
-##### If a branch is missing from pulling it down in Master, you can directly reference it
+##### If a branch is missing from pulling it down in Main, you can directly reference it
 - ```git fetch origin feat/blah/JIRATICKET-12324```
 - ```git checkout feat/blah/JIRATICKET-12324```
 - ```git branch```
@@ -44,4 +44,6 @@
 - Then reclone the repo locally.
 - git clone git@github.com:sarah/sarah_previously_delete_repo
 - *This can also be used when you have a bunch of local repos that you want to clean up. Excessive branchery*
+- cd into the repo within your workspace
+- you will need to initialize this repo ```git init``` and/or run your `Makefile` ```make setup``` in order to have git initialized and have your hooks to connect to remote Git
   
