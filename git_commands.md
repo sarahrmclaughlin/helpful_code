@@ -32,3 +32,16 @@
 - Check if origin is set up: ```git remote -v``` -if it returns nothing, add it by: ```git remote add origin <repository-URL>```
 - ```git remote add origin https://github.com/sarahrmclaughlin/evidently_ai.git```
 - Then do a fetch
+
+##### If you run into this error: 'You have divergent branches and need to specify how to reconcile them, git confi pull.rebase false(true) or .ff only
+- This usually happens when you are working on a branch and are trying to switch without pulling first. You can try the suggestions, but it usually doesn't help.
+- If you've already saved the changes of what you are working on or are fine with starting from scratch , you can follow these steps.
+- ***BE EXTRA CAREFUL IN DOING THIS**** *This deletes and recreates your repo. MAKE SURE EVERYTHING IS PUSHED REMOTELY ALREADY*
+- ```cd ..```
+- ```rm rf name_of_repo_to_be_deleted_and_recreated```
+- Description of both```rm``` remove/delete, ```rf``` recursive format/forced delete, this will completely delete your local repo
+- That specific repo will be gone after these commands
+- Then reclone the repo locally.
+- git clone git@github.com:sarah/sarah_previously_delete_repo
+- *This can also be used when you have a bunch of local repos that you want to clean up. Excessive branchery*
+  
