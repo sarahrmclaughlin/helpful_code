@@ -1,6 +1,6 @@
 #### First time creating and cloning a repo
 - Create the repo in GitHub
-- Add ``.gitignore file`` (this can also be done in VS Code later)
+- Add .gitignore file (this can also be done in VS Code later)
 - In VScode(or your regular terminal) , cd to your repo folder, then ```git clone https://github.com/sarah/ml_ops.git``` (This comes from the <CODE> button in Github)
 - Make sure to initialize this repo ```git init```
 
