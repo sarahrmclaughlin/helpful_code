@@ -1,13 +1,19 @@
-##### When working on another branch while Main just got approved with updates from another PR and you want to pull changes from Main
-- ```git checkout master```
-- ```git pull origin master```
+#### First time creating and cloning a repo
+- Create the repo in GitHub
+- Add ``.gitignore file`` (this can also be done in VS Code later)
+- In VScode(or your regular terminal) , cd to your repo folder, then ```git clone https://github.com/sarah/ml_ops.git``` (This comes from the <CODE> button in Github)
+- Make sure to initialize this repo ```git init```
+
+##### When working on another branch while Main/Master just got approved with updates from another PR and you want to pull changes from Main
+- ```git checkout main```
+- ```git pull origin main```
 - ```git checkout {your branch}```
-- ```git merge master```
+- ```git merge main```
 - in VSCode, it will ask about opening Merge Editor. ```Incoming`` means changes from **Main** branch and ``Current`` is talking about your working branch.
 
 ##### Once Master branch is updated and you want to start a new branch based off Main
-- ```git checkout master```
-- ```git pull origin master```
+- ```git checkout main```
+- ```git pull origin main```
 - ```git checkout -b new-branch-name```
 - ```git branch ```
 - ```git push -u origin new-branch-name``` #This command will push the branch and set the upstream tracking to the remote repository.
