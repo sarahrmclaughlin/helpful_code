@@ -105,4 +105,35 @@ m3 = []
 m3.append(m2)
 print('running pipeline for', m3)
 
+################################################################################################################
+### Copy contents of a prefix to another prefix
+### Created with the help of chatgpt
+################################################################################################################
+
+def copy_prefix_contents(source_bucket, source_prefix, destination_bucket, destination_prefix):
+    # Create an S3 client
+    s3 = boto3.client('s3')
+    
+    # List objects in the source prefix
+    response = s3.list_objects_v2(Bucket=source_bucket, Prefix=source_prefix)
+    if 'Contents' not in response:
+        print("No objects found in the source prefix.")
+        return
+    
+    # Iterate over the objects and copy them
+    for obj in response['Contents']:
+        source_key = obj['Key']
+        # Derive the destination key
+        destination_key = source_key.replace(source_prefix, destination_prefix, 1)
+        
+        # Perform the copy
+        copy_source = {'Bucket': source_bucket, 'Key': source_key}
+        s3.copy_object(CopySource=copy_source, Bucket=destination_bucket, Key=destination_key)
+        print(f"Copied {source_key} to {destination_key}")
+
+source_bucket = 'a-bc-123-us-east-1'
+source_prefix = 'prefix_of_source_data/'
+destination_bucket = 'abc-123-destination-us-east-1'
+destination_prefix = 'prefix_where_you_copy_the_data_to/'
+
     
