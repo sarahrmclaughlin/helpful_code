@@ -1,7 +1,7 @@
 #### First time creating and cloning a repo
 - Create the repo in GitHub
 - Add .gitignore file (this can also be done in VS Code later)
-- In VScode(or your regular terminal) , cd to your repo folder, then ```git clone https://github.com/sarah/ml_ops.git``` (This comes from the <CODE> button in Github)
+- In VScode(or your regular terminal) , cd to your repo folder, then ```git clone https://github.com/sarah/ml_ops.git``` (This comes from the < > button in Github)
 - Make sure to initialize this repo ```git init```
 
 ##### When working on another branch while Main/Master just got approved with updates from another PR and you want to pull changes from Main
@@ -52,4 +52,7 @@
 - *This can also be used when you have a bunch of local repos that you want to clean up. Excessive branchery*
 - cd into the repo within your workspace
 - you will need to initialize this repo ```git init``` and/or run your `Makefile` ```make setup``` in order to have git initialized and have your hooks to connect to remote Git
+
+##### If you want to add packages you just installed to the requirements.txt (or create this file)
+- ```pip freeze > requirements.txt```
   
