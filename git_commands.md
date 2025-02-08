@@ -1,24 +1,44 @@
-#### First time creating and cloning a repo
+### Terminology
+- Main == Master (We should be using the phrase **Main**, but some systems need to reference the old term Master.)
+- Origin/Remote - refers to the cloud Git location, i.e. the Github, Bitbucket version.
+    - The code in the Main Github/Bitbucket location is our source of truth.
+- Local - What is stored on your computer.
+    - When you write in an editor (VSCode, etc), changes are saved locally.
+    - This will be different than what is remote(in Github), until you commit the changes and push them.
+
+#### If this is the first time creating and cloning a repo
 - Create the repo in GitHub
-- Add .gitignore file (this can also be done in VS Code later)
-- In VScode(or your regular terminal) , cd to your repo folder, then ```git clone https://github.com/sarah/ml_ops.git``` (This comes from the < > button in Github)
+- Add ```.gitignore file``` (this can also be done in VS Code later)
+  - It is helpful to make sure this file includes things you use frequently, but don't want to push to git
+  ```
+  # Ignore Python cache files
+    __pycache__/
+    *.pyc
+  # Ignore environment or IDE-specific files
+  .env
+  .vscode/
+  .DS_Store
+  # Ignore virtual environments
+  venv/```
+- In VScode(or your regular terminal) , cd to your repo folder, then ```git clone https://github.com/sarah/ml_ops.git```
+  - (This comes from the < > button in Github)
 - Make sure to initialize this repo ```git init```
 
-#### When working on another branch while Main/Master just got approved with updates from another PR and you want to pull changes from Main
+#### If you are working on another branch while Main/Master just got approved with updates from another PR and you want to pull changes from Main
 - ```git checkout main```
 - ```git pull origin main```
 - ```git checkout {your branch}```
 - ```git merge main```
 - in VSCode, it will ask about opening Merge Editor. ```Incoming``` means changes from **Main** branch,```Current``` is talking about your **Working** branch.
 
-#### Once Main branch is updated and you want to start a new branch based off Main
+#### If the remote Main branch is updated and you want to start a new branch based off Main
 - ```git checkout main```
 - ```git pull origin main```
 - ```git checkout -b new-branch-name```
 - ```git branch ```
 - ```git push -u origin new-branch-name``` #This command will push the branch and set the upstream tracking to the remote repository.
 
-#### If a branch is missing from pulling it down in Main, you can directly reference it
+#### If a local branch is missing after you pulled Main from remote(Github), you can directly reference it
 - ```git fetch origin feat/blah/JIRATICKET-12324```
 - ```git checkout feat/blah/JIRATICKET-12324```
 - ```git branch```
@@ -58,4 +78,10 @@
 
 #### If you want to add packages you just installed to the requirements.txt (or create this file). 
 - ```pip freeze > requirements.txt```
+
+#### If you accidentally forget to add your virtual env to your .ignore file
+- When adding packages automatically (above^), the virtual environment files will also be added.
+  - This results in a large amount of files and you may not be able to push your changes to Git.
+  - Remove them by:
+    ```git rm -r -rm --cached venv/```
   
