@@ -1,7 +1,7 @@
 
-### How to set-up a virtual environment in VScode
+### How to set-up a virtual environment in VSCode
 
-##### I did this in my terminal within VScode
+##### I did this in my terminal within VSCode
 
   1. Install Homebrew (add directions*)
   2. Install python ``brew install python`` and check version ```python3 --version```
@@ -13,8 +13,9 @@
   9.  You can also see this on file on your VS Code under the newly created folder: $activate
   10. To deactivate, in terminal: deactivate
 	
- - Confirm you are in a virtual environment by doing: which pip
+ - Confirm you are in a virtual environment by doing ```which pip```
 	- returns a path with your project directory and venv
 	- /Users/sarahrmclaughlin/Documents/repos/check_venv/test_venv/bin/pip
 
 #### Step 1-3 only need to be done once
+#### Steps 7 & 10 are what you need to do each time you want to work in your virtual environment.
