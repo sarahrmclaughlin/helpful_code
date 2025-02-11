@@ -18,4 +18,4 @@
 	- /Users/sarahrmclaughlin/Documents/repos/check_venv/test_venv/bin/pip
 
 #### Step 1-3 only need to be done once
-#### Steps 7 & 10 are what you need to do each time you want to work in your virtual environment.
+#### Steps 6 & 10 are what you need to do each time you want to work in your virtual environment.
