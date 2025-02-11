@@ -19,3 +19,9 @@
 
 #### Step 1-3 only need to be done once
 #### Steps 6 & 10 are what you need to do each time you want to work in your virtual environment.
+
+##### If you need to delete the virtual env
+```rm -rf venv```
+
+##### If you have a requirements file with all the packages you would like installed within the virtual env
+```pip install -r requirments.txt```
