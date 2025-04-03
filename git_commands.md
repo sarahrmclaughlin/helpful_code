@@ -39,8 +39,9 @@
 - ```git push -u origin new-branch-name``` #This command will push the branch and set the upstream tracking to the remote repository.
 
 #### If a local branch is missing after you pulled Main from remote(Github), you can directly reference it
-- ```git fetch origin feat/blah/JIRATICKET-12324```
-- ```git checkout feat/blah/JIRATICKET-12324```
+- ```git fetch```
+- ```git branch -``` -r is for remote, let's you see which remote branches are available 
+- ```git switch --track origin/feat/blah/JIRATICKET-12324```
 - ```git branch```
 - ```git pull origin feat/blah/JIRATICKET-12324``` #gives you any updates
 
