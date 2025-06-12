@@ -62,8 +62,23 @@ registered_model_uri = "models:/Sarah_XGBoost_BC_Model/1"
 loaded_model_by_model_name = mlflow.pyfunc.load_model(model_uri=registered_model_uri)
 loaded_model_by_model_name
 
+# See methods and attributes of a model
+dir(loaded_model_by_model_name._model_impl_sklearn_model)
+# --> Things like n_features_in_ , feature_name_
+# Get list of features in the model
+loaded_model_by_model_name._model_impl_sklearn_model.feature_name_
+# Get number of features in the model
+loaded_model_by_model_name._model_impl_sklearn_model.n_features_in_
+
 # Load artifacts from the registered model
 artifacts = mlflow.artifacts.download_artifacts(artifact_uri=registered_model_uri)
+
+# Load artifacts from a run_id
+artifact_uri = mf_flow.get_run(run_id).info,artifact_uri
+# -- If run_id = 123,and experiment_id = 701, in Databricks it is stored in DBFS, the artifact_uri will be something like:
+# --> dbfs:/databricks/mlflow-tracking/{experiment_id}/{run_id}/artifacts
+# ---> dbfs:/databricks/mlflow-tracking/701/123/artifacts
+
 ```
 
 #### General notes about ML Flow log_params, log_metrics, log_artifacts
