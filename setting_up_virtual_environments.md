@@ -6,19 +6,21 @@
   1. Install Homebrew (add directions*)
   2. Install python ``brew install python`` and check version ```python3 --version```
   3. Install virtual environment ```pip3 install virtualenv```
-  4. Run this in VScode terminal : ```python3 -m venv test_venv``` (Here test_env is the name for the virtual env and appears once activated
-  5. After running that successfully, you will see some files generated on the left in VS code (bin, include, libpyenv.cfg)
-  7. Activate Virual Environment: ```source test_venv/bin/activate```
-  8.  On the left hand side of the VScode terminal you will see the virtual environment name in brackets,this means it is activated/on: (test_venv). Doing this runs the activate file from the folder test_venv/bin:
-  9.  You can also see this on file on your VS Code under the newly created folder: $activate
-  10. To deactivate, in terminal: deactivate
+  4. Run this in VScode terminal : ```python3 -m venv test_venv``` (Here test_env is the name for the virtual env and appears once activated. You only need to set it up once.)
+     - After running that successfully, you will see some files generated on the left in VS code (bin, include, libpyenv.cfg)
+  5. Activate Virual Environment: ```source test_venv/bin/activate```
+     -  On the left hand side of the VScode terminal you will see the virtual environment name in brackets,this means it is activated/on: (test_venv). Doing this runs the activate file from the folder test_venv/bin:
+     - You can also see this on file on your VS Code under the newly created folder: $activate
+  6. To deactivate, in terminal: deactivate
 	
  - Confirm you are in a virtual environment by doing ```which pip```
 	- returns a path with your project directory and venv
 	- /Users/sarahrmclaughlin/Documents/repos/check_venv/test_venv/bin/pip
+ - Confirm your python version on your mac ```python3 --version```
+ - After step 5, confirm your python version within your virtual environment ```python --version```
 
-#### Step 1-3 only need to be done once
-#### Steps 6 & 10 are what you need to do each time you want to work in your virtual environment.
+#### Step 1-4 only need to be done once
+#### Steps 5 & 6 are what you need to do each time you want to work in your virtual environment.
 
 ##### If you need to delete the virtual env
 ```rm -rf venv```
