@@ -27,3 +27,6 @@
 
 ##### If you have a requirements file with all the packages you would like installed within the virtual env
 ```pip install -r requirments.txt```
+
+##### If you are trying to run python, you can select it using the Python Interpreter 
+- In the top search bar type ```> Python Select Interpreter```, and find the one available in your virtual environment.
