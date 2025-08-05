@@ -30,3 +30,11 @@
 
 ##### If you are trying to run python, you can select it using the Python Interpreter 
 - In the top search bar type ```> Python Select Interpreter```, and find the one available in your virtual environment.
+
+##### If you have an older python version and you need a newer one for the venv
+- Make sure you are in the venv, then check the version ```python --version ```
+- deactivate the venv ```deactivate```
+- delete the venv ```rm -rf .venv```
+- recreate it with correct python version ```python3.12 -m venv .venv```
+- activate it ```source .venv/bin/activate```
+- confirm python version is update ```source .venv/bin/activate```
