@@ -85,4 +85,8 @@
   - This results in a large amount of files and you may not be able to push your changes to Git.
   - Remove them by:
     ```git rm -r -rm --cached venv/```
+    
+#### If you want to delete a local branch
+- Delete only fully merged branches (the safer choice) ``` git branch -d feat/branch_name_to_delete ```
+- Delete any branch even if not fully merged (do with caution) ``` git branch -D feat/branch_name_to_delete ```
   
