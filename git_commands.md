@@ -89,4 +89,8 @@
 #### If you want to delete a local branch
 - Delete only fully merged branches (the safer choice) ``` git branch -d feat/branch_name_to_delete ```
 - Delete any branch even if not fully merged (do with caution) ``` git branch -D feat/branch_name_to_delete ```
+
+#### If you want to add an .env to your repo
+- In the terminal ```touch .env``` - You will see this pop up as a file here.
+- If you are storing tokens or keys or secrets here, make sure you add this to your ```.gitignore``` file in your project repo
   
