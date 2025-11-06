@@ -93,4 +93,15 @@
 #### If you want to add an .env to your repo
 - In the terminal ```touch .env``` - You will see this pop up as a file here.
 - If you are storing tokens or keys or secrets here, make sure you add this to your ```.gitignore``` file in your project repo
-  
+
+#### If you want to generate/integrate SSH keys
+- Purpose: Securely authenticate your local computer environment with services like Github so no password is required.
+- This is how we can run Git commands(push/pull/commit) and connect local(personal computer) with the remote Github repos.
+- 1. Go to your home directory ```cd ~```. Verify by ```pwd``` and you should see something like ```/users/sarah```
+- 2. ```cd ~/.ssh``` This changes your directory to the hidden ssh folder in your home directory
+     - This is where SSH stores public and private key
+- 3. Generate a new SSH key pair ssh-keygen -t rsa
+     - Two files are created id_rsa (private key) and id_rsa.pub(public key added to Github account, looks like a weird image)
+     - Access the public key cat ```id_rsa.pub```, copy from terminal and paste in Github
+    
+    
