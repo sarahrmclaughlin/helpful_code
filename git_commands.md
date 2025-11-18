@@ -104,4 +104,35 @@
      - Two files are created id_rsa (private key) and id_rsa.pub(public key added to Github account, looks like a weird image)
      - Access the public key cat ```id_rsa.pub```, copy from terminal and paste in Github
     
+##### If you want to use UV as a package manager
+- Can be installed within a virtual environment or outside
+- UV is a tool for environment managment, it is installed globally usually here: ```~/.cargo/bin/uv```
+- Check whether it is installed ```cat ~.zshrc```, or open and manually view ```open -e /.zshrc```
+- ```curl -LsSf https://astral.sh/uv/install.sh | sh```
+- ```uv --version```
+- Usually can't find it so restart terminal manually or run ```source ~/.zshrc```
+- Make sure your venv is deactivate and deleted ```rm -rf venv/```
+- Within your repo, cd to your project. Here you will create a toml file which is used in UV for package management
+- Copy this into your terminal, specifying project name and packages needed
+- ```cat > pyproject.toml << EOF
+[project]
+name = "sarah_project_for_uv"
+version = "0.1.0"
+description = "A project for pkg management learning"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.3.0, <2.0",
+    "python-dotenv>=1.0.0, <2.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sarah_project_for_uv"]
+EOF```
+- UV will now create the venv ```uv sync```
+- Activate this new venv ```source .venv/bin/activate```
+    
     
