@@ -139,5 +139,8 @@ EOF```
 ##### If you are in VScode and want to add folders to the project
 - ```mkdir -p dags logs plugins sarah_test``` --> You will see these folders created on the project file directory of VS Code
 - ```cd sarah_test``` ```touch sarah.txt``` --> Create a txt file within the sarah_test folder
+
+#### If you want to open Docker and get it running
+- Terminal -> ```open /Applications/Docker.app```
     
     
