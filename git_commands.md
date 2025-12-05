@@ -93,6 +93,7 @@
 #### If you want to add an .env to your repo
 - In the terminal ```touch .env``` - You will see this pop up as a file here.
 - If you are storing tokens or keys or secrets here, make sure you add this to your ```.gitignore``` file in your project repo
+- ```"AIRFLOW_UID=123" >> .env``` --> Will add what you want to the .env file
 
 #### If you want to generate/integrate SSH keys
 - Purpose: Securely authenticate your local computer environment with services like Github so no password is required.
@@ -134,5 +135,9 @@ packages = ["src/sarah_project_for_uv"]
 EOF```
 - UV will now create the venv ```uv sync```
 - Activate this new venv ```source .venv/bin/activate```
+
+##### If you are in VScode and want to add folders to the project
+- ```mkdir -p dags logs plugins sarah_test``` --> You will see these folders created on the project file directory of VS Code
+- ```cd sarah_test``` ```touch sarah.txt``` --> Create a txt file within the sarah_test folder
     
     
