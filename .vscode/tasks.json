@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "pip install requirements",
+			"type": "shell",
+			"command": "pip",
+			"args": [
+				"install",
+				"-r",
+				"requirements.txt"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/rest-api-example"
+			},
+			"presentation": {
+				"reveal": "silent"
+			}
+		}
+	]
+}
