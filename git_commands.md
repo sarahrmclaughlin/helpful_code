@@ -142,5 +142,77 @@ EOF```
 
 #### If you want to open Docker and get it running
 - Terminal -> ```open /Applications/Docker.app```
+
+##### ----------------------------------------------------------------------------------------------------------------------------------------------
+### **Github Actions**
+#### GitHub Actions Best Practices: 
+- What is it? "automated pipelines" that run on GitHub's servers whenever you push code or open PRs.
+
+1. *Understand the Basics First*
+- What is GHA? It's GitHub's built-in CI/CD tool. You define "workflows" (YAML files) that trigger on events like pushes or PRs. Each workflow has "jobs" (e.g., test, build) running on virtual machines (runners).
+- Why use it? Catches bugs early, ensures consistency, and automates deployments. For your repo, it can run tests, lint code, build Docker images, and even deploy if needed.
+- Key Files: Workflows live in workflows (create this folder if it doesn't exist). Example: .github/workflows/ci.yml.
+2. *Core Best Practices*
+- Keep It Simple and Modular: Start with one workflow file per major task (e.g., ci.yml for testing, deploy.yml for releases). Avoid monolithic files—split jobs for clarity.
+- Use Triggers Wisely: Don't run on every push to main if it's noisy. Common: on: [push, pull_request] for branches like main or develop. Add paths to trigger only on relevant file -changes (e.g., paths: ['src/**', 'tests/**']).
+- Choose Runners Efficiently: Use runs-on: ubuntu-latest for most Python/Docker work—it's free and fast. For Windows/Mac, specify accordingly, but stick to Linux unless needed.
+- Leverage Official Actions: Use pre-built actions from GitHub Marketplace (e.g., actions/checkout@v4 for cloning code). They're vetted and save time.
+- Handle Dependencies Smartly: Cache pip installs or Docker layers to speed up runs. For Python, use actions/setup-python with caching.
+- Secure Secrets: Never hardcode API keys or passwords. Store them in repo Settings > Secrets and Variables > Actions, then reference as ${{ secrets.MY_SECRET }}.
+- Fail Fast, But Gracefully: Use continue-on-error: true for non-critical steps (e.g., linting warnings). Always check exit codes.
+- Test in Parallel/Matrices: For multi-version testing (e.g., Python 3.9/3.10), use a matrix strategy to run jobs in parallel.
+- Artifacts and Logs: Upload test results or build outputs with actions/upload-artifact for debugging. Logs are auto-saved, but make them readable.
+- Branch Protection Rules: In repo Settings > Branches, require CI to pass before merging PRs. This enforces quality.
+- Cost Awareness: Free tier allows 2,000 minutes/month on ubuntu-latest. Monitor usage in repo Settings > Actions > Usage.
+- Version Pinning: Pin action versions (e.g., @v4) to avoid breaking changes, but update regularly.
+- Documentation: Comment your YAML heavily—explain what each job/step does. Add a README.md in workflows if workflows get complex.
+- Integrate with Tools: Since you have a Makefile, call it in steps (e.g., make test). This keeps logic in one place and makes workflows portable.
+
+```
+- First, you'll need to create a .github/workflows directory in your repo root if it doesn't exist already.
+- Then create a YAML file there (you can name it something like ci.yml or main.yml
+
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run tests
+      run: |
+        pytest tests/
+
+docker-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Build Docker image
+      run: |
+        docker build -t my-airflow-project:latest .
+````
+
     
     
