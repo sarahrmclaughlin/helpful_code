@@ -17,6 +17,8 @@
     - ```packages:package: dbt-labs/dbt_utils version: 1.1.1```
 
 ### Typical workflow
+
+#### First time set-up
 1. Set-up DBT projects using ```uv run dbt init dbt_project```
    - Update profiles with DBT info
    - Update pyproject.toml with DBT info
@@ -25,6 +27,13 @@
 4. View results in browser
     - ```uv run dbt docs generate```
     - ```uv run dbt docs serve```
+  
+#### After making multiple project changes
+1. ```dbt parse``` — Rebuild the manifest and see all your models/tests
+2. ```dbt compile``` — Generate SQL from your Jinja templates, verify syntax
+3. ```dbt run``` — Execute your models against the database
+4. ```dbt test``` — Run all data quality tests
+5. ```dbt docs generate``` — Create documentation (optional, but helpful to review changes)
   
 ### Debug Errors
 - Compilation
@@ -36,8 +45,10 @@
 - Validation
     - Test failures, data quality issues
     - ```dbt test -v``` then inspect ```run_results.json```
- 
-- Test only your custom drift tests
+
+- Test only your DBT pre-configured tests from schema.yml
+    - ```dbt test --select test_type:generic```
+- Test only your custom tests
 ```uv run dbt test -s tag:drift```
 - Test only a single test
 ```uv run dbt test -s test_distribution_shift```
