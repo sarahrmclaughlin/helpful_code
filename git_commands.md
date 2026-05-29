@@ -105,7 +105,8 @@
      - Two files are created id_rsa (private key) and id_rsa.pub(public key added to Github account, looks like a weird image)
      - Access the public key cat ```id_rsa.pub```, copy from terminal and paste in Github
     
-##### If you want to use UV as a package manager
+##### If you want to use *UV* as a package manager
+##### FIRST TIME INSTALLATION
 - Can be installed within a virtual environment or outside
 - UV is a tool for environment managment, it is installed globally usually here: ```~/.cargo/bin/uv```
 - Check whether it is installed ```cat ~.zshrc```, or open and manually view ```open -e /.zshrc```
@@ -115,7 +116,7 @@
 - Make sure your venv is deactivate and deleted ```rm -rf venv/```
 - Within your repo, cd to your project. Here you will create a toml file which is used in UV for package management
 - Copy this into your terminal, specifying project name and packages needed
-- ```cat > pyproject.toml << EOF
+ ```bash cat > pyproject.toml << EOF
 [project]
 name = "sarah_project_for_uv"
 version = "0.1.0"
@@ -132,9 +133,13 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sarah_project_for_uv"]
-EOF```
+EOF
+```
 - UV will now create the venv ```uv sync```
 - Activate this new venv ```source .venv/bin/activate```
+
+##### If UV is already installed and you have a brand new repo (no dependencies)
+- ```uv init``` 
 
 ##### If you are in VScode and want to add folders to the project
 - ```mkdir -p dags logs plugins sarah_test``` --> You will see these folders created on the project file directory of VS Code
@@ -143,7 +148,7 @@ EOF```
 #### If you want to open Docker and get it running
 - Terminal -> ```open /Applications/Docker.app```
 
-##### ----------------------------------------------------------------------------------------------------------------------------------------------
+-----
 ### **Github Actions**
 #### GitHub Actions Best Practices: 
 - What is it? "automated pipelines" that run on GitHub's servers whenever you push code or open PRs.
