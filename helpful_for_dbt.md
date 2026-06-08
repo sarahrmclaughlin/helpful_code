@@ -20,7 +20,9 @@
 
 #### First time set-up
 1. Set-up DBT projects using ```uv run dbt init dbt_project```
-   - Update profiles with DBT info
+   - Update Global DBT profile needs to be updated with project specific DBT info for connection
+       - VSCode ```code ~/.dbt/profiles.yml```
+       - Terminal ```nano ~/.dbt/profiles.yml```
    - Update pyproject.toml with DBT info
 2. Run models ```uv run dbt run```
 3. Run tests ```uv run dbt test```
