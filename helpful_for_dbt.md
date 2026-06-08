@@ -23,6 +23,7 @@
    - Update Global DBT profile needs to be updated with project specific DBT info for connection
        - VSCode ```code ~/.dbt/profiles.yml```
        - Terminal ```nano ~/.dbt/profiles.yml```
+       - Verify connection works ```cd dbt_project uv run dbt debug``` -->You should see "Connection test: [OK connection ok]"
    - Update pyproject.toml with DBT info
 2. Run models ```uv run dbt run```
 3. Run tests ```uv run dbt test```
